@@ -1,0 +1,30 @@
+services:
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Hbgtbh1234
+      PGPORT: 55432
+    ports:
+      - "55432:55432"
+
+
+  spring-app:
+    image: c1lowen/blog_project
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - images-volume:/projectUser/images/
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:55432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Hbgtbh1234
+      BASE_PATH: /projectUser/
+      PATH_IMAGES: images/
+
+volumes:
+  images-volume:

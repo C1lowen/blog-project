@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.container {
+    margin-left: 500px; /* Ширина хедера */
+    position: relative;
+}
+
+main {
+    padding: 20px;
+}
+
+.post-title {
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom:40px;
+}
+
+.post-form {
+    margin-top: 20px;
+}
+
+.post-form-text {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    padding: 20px;
+    border: solid;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 10px;
+}
+
+
+.comments {
+    line-height: 1em;
+    border-top: solid;
+    padding-top: 20px;
+    margin-top: 70px;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+    position: relative; /* Добавлено для абсолютного позиционирования иконки */
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-date {
+    color: #555;
+    font-size: 14px;
+}
+
+.comment-text {
+    line-height: 1;
+}
+
+/* Стили для иконки мусорной корзины */
+.comment-header a {
+    cursor: pointer;
+    font-size: 18px;
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin-top:35px;
+    margin-right:10px;
+}
+
+.comment-form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-form textarea {
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+    height: 70px;
+}
+
+.comment-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Добавлено отступ слева для разделения элементов */
+}
+.span-date {
+    margin-bottom: 10%;
+}
+
+
+
+@media (max-width: 1618px) {
+    .container {
+        margin-left: 400px;
+    }
+}
+
+@media (max-width: 1540px) {
+    .container {
+        margin-left: 320px;
+        max-width: 900px;
+    }
+}
+
+
+
+@media (max-width: 1252px) {
+    .container {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        margin-left: auto ;
+    }
+}

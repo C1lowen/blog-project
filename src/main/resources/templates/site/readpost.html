@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read post</title>
+    <link rel="icon" th:href="@{/falcon/favicon.ico}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/fontawesome/css/all.min.css}"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link th:href="@{/stylesite/bootstrap.min.css}" rel="stylesheet" >
+    <link th:href="@{/stylesite/templatemo-xtra-blog.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/stylesite/readpoststyle.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Playpen+Sans&family=Roboto+Condensed:wght@600&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofGJzfuX88mz2NqI0y+8GfRTt8k2FvTlV" crossorigin="anonymous">
+    <!--
+
+    TemplateMo 553 Xtra Blog
+
+    https://templatemo.com/tm-553-xtra-blog
+
+    -->
+</head>
+<body>
+<header class="tm-header" id="tm-header">
+    <div class="tm-header-wrapper">
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="tm-site-header">
+            <div class="mb-3 mx-auto tm-site-logo" sec:authorize="!isAuthenticated()"><i class="fas fa-times fa-2x"></i></div>
+            <div class="mb-3 mx-auto tm-site-logo" sec:authorize="isAuthenticated()"><i class="fas fa-check-circle fa-3x"></i></div>
+            <h1 class="text-center">
+                <a th:href="@{/}" class="name-blog"> Xtra Blog
+                </a>
+            </h1>
+        </div>
+        <nav class="tm-nav" id="tm-nav">
+            <ul>
+                <li class="tm-nav-item " sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/authentication}" class="tm-nav-link">
+                        <i class="fas fa-user"></i>
+                        Login
+                    </a>
+                </li>
+                <li class="tm-nav-item" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/userpanel}" class="tm-nav-link">
+                        <i class="fas fa-user"></i>
+                        <div sec:authentication="name"></div>
+                    </a>
+                </li>
+                <li class="tm-nav-item" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/single}" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Single Post
+                    </a></li>
+                <li class="tm-nav-item " >
+                    <a th:href="@{/about}" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        About Xtra
+                    </a></li>
+                <li class="tm-nav-item">
+                    <a th:href="@{/contact}" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        Contact Us
+                    </a></li>
+                <li class="tm-nav-item" sec:authorize="hasRole('ROLE_Admin')">
+                    <a th:href="@{/admin}" class="tm-nav-link">
+                        <i class="fas fa-user-cog"></i>
+                        Admin Panel
+                    </a></li>
+                <li sec:authorize="isAuthenticated()" class="tm-nav-item">
+                    <form th:method="POST" th:action="@{/logout}">
+                        <button class="tm-nav-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Exit
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <div class="tm-mb-65">
+            <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link" target="_blank">
+                <i class="fab fa-facebook tm-social-icon"></i>
+            </a>
+            <a href="https://twitter.com" class="tm-social-link" target="_blank">
+                <i class="fab fa-twitter tm-social-icon"></i>
+            </a>
+            <a href="https://instagram.com" class="tm-social-link" target="_blank">
+                <i class="fab fa-instagram tm-social-icon"></i>
+            </a>
+            <a href="https://linkedin.com" class="tm-social-link" target="_blank">
+                <i class="fab fa-linkedin tm-social-icon"></i>
+            </a>
+        </div>
+        <p class="tm-mb-80 pr-5 text-white">
+            Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
+        </p>
+    </div>
+</header>
+
+
+<div class="container" th:method="GET" th:object="${postread}">
+
+        <div class="post-title" th:text="${postread.title}"></div>
+
+        <div class="post-form">
+            <form>
+                <div id="post-text" class="post-form-text" th:text="${postread.text}" style="white-space: pre-line;" readonly></div>
+            </form>
+        </div>
+        <div class="post-meta-info">
+             <span class="span-date" th:text="'Дата публикации: ' + ${postread.getDate()}"> </span>
+             <span class="span-date" th:text="'Автор: ' + ${author}"></span>
+        </div>
+        <div class="comments">
+            <h2 th:text="'Комментарии (' + ${postread.getCountComments()} + ') ' "></h2>
+            <form th:action="@{/savecomment}" method="post" th:object="${postComment}">
+                <input type="hidden" name="postId" th:value="${postread.id}" />
+                <div class="comment-form" >
+                    <textarea placeholder="Оставьте комментарий" th:field="*{message}"></textarea>
+                    <button type="submit">Отправить</button>
+                </div>
+            </form>
+            <div class="comment" th:each="comm : ${comments}">
+                <div class="comment-header">
+                    <span class="comment-user" th:text="${comm.name}"></span>
+                    <span class="comment-date" th:text="${comm.date}"></span>
+                    <a th:if="${comm.name.equals(userName) or #authorization.expression('hasRole(''ROLE_Admin'')')}" th:href="@{/deletecomm/{id}(id=${comm.getId()})}">
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="comment-text" th:text="${comm.message}"></p>
+            </div>
+        </div>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/templatemo-script.js"></script>
+</body>
+</html>

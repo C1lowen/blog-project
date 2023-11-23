@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.post {
+    display: flex;
+    width: 1400px;
+    margin-left: 400px;
+}
+
+.post-form {
+    flex: 3;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0.1);
+}
+
+.post-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.post-form input[type="text"],
+.post-form textarea {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.post-form textarea {
+    width: 100%;
+    max-height: 400px;
+    min-height: 400px;
+}
+.post-form input[type="file"] {
+    margin-bottom: 16px;
+    height: 45px;
+}
+.post-form input[type="text"]{
+    height: 40px;
+}
+.post-form button {
+    background-color: #00CCCC;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 450px;
+}
+
+.post-form button:hover {
+    background-color: #45a049;
+}
+
+
+
+.emoji-picker {
+    margin-bottom: 16px;
+}
+
+.emoji {
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.new-post-form {
+    margin-left: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    background: white;
+}
+
+.new-post-form header h1 {
+    text-align: center;
+}
+
+@media (max-width: 1700px) {
+    .post-form button {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 1618px) {
+    .post-form button {
+        margin-left: 170px;
+    }
+}
+
+@media (max-width: 1540px) {
+    .post {
+        margin-left: 320px;
+    }
+}
+
+@media (max-width: 1437px) {
+    .new-post-form {
+        display: none;
+    }
+    .post-form button {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 1352px) {
+    .new-post-form {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .post {
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .post-form button {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .post-form input[type="file"] {
+        margin-bottom: 16px;
+        height: 45px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .post-form input[type="file"] {
+        margin-bottom: 16px;
+        height: 45px;
+        font-size: 10px;
+    }
+}

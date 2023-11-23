@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About</title>
+    <link rel="icon" th:href="@{/falcon/favicon.ico}" type="image/x-icon">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="/stylesite/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesite/templatemo-xtra-blog.css" rel="stylesheet">
+
+<!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+</head>
+<body>
+	<header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header">
+                <div class="mb-3 mx-auto tm-site-logo" sec:authorize="!isAuthenticated()"><i class="fas fa-times fa-2x"></i></div>
+                <div class="mb-3 mx-auto tm-site-logo" sec:authorize="isAuthenticated()"><i class="fas fa-check-circle fa-3x"></i></div>
+                <h1 class="text-center">
+                    <a th:href="@{/}" class="name-blog"> Xtra Blog
+                    </a>
+                </h1>
+            </div>
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/authentication}" class="tm-nav-link">
+                            <i class="fas fa-user"></i>
+                            Login
+                        </a>
+                    </li>
+                    <li class="tm-nav-item" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/userpanel}" class="tm-nav-link">
+                            <i class="fas fa-user"></i>
+                            <div sec:authentication="name"></div>
+                        </a>
+                    </li>
+                    <li class="tm-nav-item" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/single}" class="tm-nav-link">
+                            <i class="fas fa-pen"></i>
+                            Single Post
+                        </a></li>
+                    <li class="tm-nav-item active" >
+                        <a th:href="@{/about}" class="tm-nav-link">
+                            <i class="fas fa-users"></i>
+                            About Xtra
+                        </a></li>
+                    <li class="tm-nav-item">
+                        <a th:href="@{/contact}" class="tm-nav-link">
+                            <i class="far fa-comments"></i>
+                            Contact Us
+                        </a></li>
+                    <li class="tm-nav-item" sec:authorize="hasRole('ROLE_Admin')">
+                        <a th:href="@{/admin}" class="tm-nav-link">
+                            <i class="fas fa-user-cog"></i>
+                            Admin Panel
+                        </a></li>
+
+                    <li sec:authorize="isAuthenticated()" class="tm-nav-item">
+                        <form th:method="POST" th:action="@{/logout}">
+                            <button class="tm-nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Exit
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tm-mb-65">
+                <a href="https://facebook.com" class="tm-social-link" target="_blank">
+                    <i class="fab fa-facebook tm-social-icon"></i>
+                </a>
+                <a href="https://twitter.com" class="tm-social-link" target="_blank">
+                    <i class="fab fa-twitter tm-social-icon"></i>
+                </a>
+                <a href="https://instagram.com" class="tm-social-link" target="_blank">
+                    <i class="fab fa-instagram tm-social-icon"></i>
+                </a>
+                <a href="https://linkedin.com" class="tm-social-link" target="_blank">
+                    <i class="fab fa-linkedin tm-social-icon"></i>
+                </a>
+            </div>
+            <p class="tm-mb-80 pr-5 text-white">
+                Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
+            </p>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row tm-mb-45">
+                <div class="col-12">
+                    <hr class="tm-hr-primary tm-mb-55">
+                    <img src="img/about-01.jpg" alt="Image" class="img-fluid">
+                </div>
+            </div>
+            <div class="row tm-row tm-mb-40">
+                <div class="col-12">                    
+                    <div class="mb-4">
+                        <h2 class="pt-2 tm-mb-40 tm-color-primary tm-post-title">About this xtra blog</h2>
+                        <p>
+                            Добро пожаловать на Xtra Blog — место, где слова превращаются в истории, и идеи находят свой голос. Xtra Blog предоставляет вам уникальную платформу для создания, редактирования и обмена вашими историями с миром.
+                        </p>
+                        <p>
+                            Создание Постов: Легко создавайте и публикуйте свои посты напрямую на Xtra Blog. Расскажите миру о своем опыте, увлечениях, или поделитесь своими мыслями.<br>
+
+                            Интерактивность: Взаимодействуйте с вашей аудиторией! Получайте обратную связь, отвечайте на комментарии, и создавайте сообщество вокруг ваших тем.<br>
+
+                            Контроль Приватности: Определите уровень доступа к вашим постам. Решайте, кто видит ваш контент, и кто может вносить комментарии.<br>
+
+                            Стиль и Оформление: Персонализируйте внешний вид своего блога. Выбирайте темы, шрифты и цвета, чтобы ваш блог был уникальным, как и вы.<br>
+                        </p>                            
+                    </div>                    
+                </div>
+            </div>
+            <div class="row tm-row tm-mb-120">
+                <div class="col-lg-4 tm-about-col">
+                    <div class="tm-bg-gray tm-about-pad">
+                        <div class="text-center tm-mt-40 tm-mb-60">
+                            <i class="fas fa-bezier-curve fa-4x tm-color-primary"></i>                            
+                        </div>                        
+                        <h2 class="mb-3 tm-color-primary tm-post-title">Background</h2>
+                        <p class="mb-0 tm-line-height-short">
+                            Наш фон – это смесь ключевых элементов, цветов и даже тем, которая отражает основные ценности и характеристики нашего сайта.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 tm-about-col">
+                    <div class="tm-bg-gray tm-about-pad">
+                        <div class="text-center tm-mt-40 tm-mb-60">
+                            <i class="fas fa-users-cog fa-4x tm-color-primary"></i>                            
+                        </div>                        
+                        <h2 class="mb-3 tm-color-primary tm-post-title">Teamwork</h2>
+                        <p class="mb-0 tm-line-height-short">
+                            Наши пользователи вдохновляют нас создавать платформу, где каждый вносит свой вклад в общее дело, а совместные усилия приносят нам новые высоты.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 tm-about-col">
+                    <div class="tm-bg-gray tm-about-pad">
+                        <div class="text-center tm-mt-40 tm-mb-60">
+                            <i class="fab fa-creative-commons-sampling fa-4x tm-color-primary"></i>                            
+                        </div>                        
+                        <h2 class="mb-3 tm-color-primary tm-post-title">Our Core Value</h2>
+                        <p class="mb-0 tm-line-height-short">
+                            На XtraBlog, наши Core Values (основные ценности) являются краеугольными камнями, определяющими не только то, кто мы есть, но и то, как мы стремимся взаимодействовать с нашим сообществом
+                        </p>
+                    </div>
+                </div>
+            </div>            
+            <div class="row tm-row tm-mb-60">
+                <div class="col-12">
+                    <hr class="tm-hr-primary  tm-mb-55">
+                </div>                
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="img/about-02.jpg" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">John Henry</h2>
+                            <h3 class="tm-h3 mb-3">CEO/Founder</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Вдохновляющий лидер и создатель нашей компании. В роли Chief Executive Officer (CEO) и основателя
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="img/about-03.jpg" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Timy Cake</h2>
+                            <h3 class="tm-h3 mb-3">Project Director</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Профессионал высшего класса и опытный руководитель проектов.
+                                В своей роли Project Director он является ключевым игроком в нашей команде
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="img/about-04.jpg" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Jay Zoona</h2>
+                            <h3 class="tm-h3 mb-3">Supervisor</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Наш надежный супервайзер, играющий ключевую роль в обеспечении эффективной работы нашей команды
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 tm-mb-60 tm-person-col">
+                    <div class="media tm-person">
+                        <img src="img/about-05.jpg" alt="Image" class="img-fluid mr-4">
+                        <div class="media-body">
+                            <h2 class="tm-color-primary tm-post-title mb-2">Catherine Soft</h2>
+                            <h3 class="tm-h3 mb-3">Team Leader</h3>
+                            <p class="mb-0 tm-line-height-short">
+                                Наш выдающийся лидер команды, воплощающий в себе сочетание организованности, творчества и мотивационного вдохновения
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="row tm-row">
+                <hr class="col-12">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Design: <a rel="nofollow" target="_parent" class="tm-external-link">Eugen Obiedkov</a>
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Copyright 2023 Eugen Company Co. Ltd.
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>
